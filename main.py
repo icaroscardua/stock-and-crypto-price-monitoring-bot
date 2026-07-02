@@ -1,6 +1,6 @@
 import time 
 from monitor import search_price
-from alertas import send_alert
+from alertas import send_alert, reset_alert
 from config import ASSETS
 
 CHECK_INTERVAL = 300
@@ -22,8 +22,13 @@ def monitor():
 
             if price < min_price:
                 send_alert(symbol, price, min_price, "below")
+                reset_alert(symbol, "above")
             elif price > max_price:
                 send_alert(symbol, price, max_price, "above")
+                reset_alert(symbol, "below")
+            else:
+                reset_alert(symbol, "below")
+                reset_alert(symbol, "above")
         
         print(f"⏳ Waiting {CHECK_INTERVAL} seconds...\n")
         time.sleep(CHECK_INTERVAL)
