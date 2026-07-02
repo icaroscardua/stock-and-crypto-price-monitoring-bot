@@ -84,19 +84,21 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure your credentials
-Copy `config.example.py` to `config.py` and fill in your details:
+Copy `config.example.py` to `config.py`:
 ```bash
 copy config.example.py config.py
 ```
 
-```python
+Create a `.env` file in the root of the project:
+```bash
+New-Item .env
+```
+
+And fill in your credentials:
+
+```
 TELEGRAM_TOKEN = "your-telegram-bot-token"
 CHAT_ID = your-chat-id
-
-ASSETS = [
-    {"symbol": "AAPL", "min": 150.00, "max": 350.00},
-    {"symbol": "BTC-USD", "min": 40000, "max": 80000},
-]
 ```
 
 > 💡 To create a Telegram bot and get your token, talk to [@BotFather](https://t.me/BotFather) on Telegram.
